@@ -1,0 +1,24 @@
+---
+kind: pipeline
+type: docker
+name: default
+
+steps:
+- name: backend
+  image: golang
+  commands:
+  - go build
+  - go test
+
+- name: frontend
+  image: node
+  commands:
+  - npm install
+  - npm run test
+
+- name: slack
+  image: plugins/slack
+  settings:
+    webhook: https://hooks.slack.com/services/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
+    channel: ecointet-channel
+    icon_url: https://unsplash.it/256/256/?random
