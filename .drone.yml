@@ -5,11 +5,11 @@ name: default
 
 steps:
 
-- name: frontend
-  image: node
+- name: test
+  image: alpine
   commands:
-  - npm install
-  - npm run test
+  - echo hello
+  - echo world
 
 - name: slack
   image: plugins/slack
