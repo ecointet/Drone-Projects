@@ -5,13 +5,21 @@ name: default
 
 steps:
 
-- name: test
+- name: EasyBuild
   image: alpine
   commands:
   - echo hello
   - echo world
 
-- name: slack
+- name: build
+  image: node:14-alpine
+  commands:
+    - apk add --no-cache git
+    - npm i -g @nestjs/cli
+    - npm ci
+    - npm run build
+
+- name: SlackNotification
   image: plugins/slack
   settings:
     webhook: 
