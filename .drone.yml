@@ -4,7 +4,8 @@
 ################
 
 kind: pipeline
-name: run_tests
+type: docker
+name: default
 
 steps:
   # Run tests against React client app (with Jest)
