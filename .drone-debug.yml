@@ -15,8 +15,9 @@ steps:
   image: node:14-alpine
   commands:
     - apk add --no-cache git
-    - sh testfile.sh
-    - echo "test done"
+    - npm i -g @nestjs/cli
+    - npm ci
+    - npm run build
 
 - name: SlackNotification
   image: plugins/slack
