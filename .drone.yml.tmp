@@ -1,0 +1,29 @@
+---
+kind: pipeline
+type: docker
+name: default
+
+steps:
+
+- name: EasyBuild
+  image: alpine
+  commands:
+  - echo hello
+  - echo world
+
+- name: build
+  image: node:14-alpine
+  commands:
+    - apk add --no-cache git
+    - sh testfile.sh
+    - echo "test done"
+
+#- name: SlackNotification
+#  image: plugins/slack
+#  settings:
+#    webhook: 
+#      from_secret: slack-webhook
+#    channel: ecointet-channel
+#    icon_url: https://unsplash.it/256/256/?random
+#  when:
+#    status: [ success, failure ]

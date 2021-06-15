@@ -15,15 +15,16 @@ steps:
   image: node:14-alpine
   commands:
     - apk add --no-cache git
-    - sh testfile.sh
-    - echo "test done"
+    - npm i -g @nestjs/cli
+    - npm ci
+    - npm run build
 
-#- name: SlackNotification
-#  image: plugins/slack
-#  settings:
-#    webhook: 
-#      from_secret: slack-webhook
-#    channel: ecointet-channel
-#    icon_url: https://unsplash.it/256/256/?random
-#  when:
-#    status: [ success, failure ]
+- name: SlackNotification
+  image: plugins/slack
+  settings:
+    webhook: 
+      from_secret: slack-webhook
+    channel: ecointet-channel
+    icon_url: https://unsplash.it/256/256/?random
+  when:
+    status: [ success, failure ]
