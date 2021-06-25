@@ -1,7 +1,7 @@
 kind: pipeline
 name: default
 
-## Docker Image Build and push
+## Docker Image Build and push -
 - name: DockerImageCreation  
   image: plugins/docker
   settings:
