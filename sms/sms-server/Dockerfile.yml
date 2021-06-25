@@ -1,0 +1,17 @@
+FROM node:latest
+
+# Create app directory
+WORKDIR /usr/src/app
+
+# Install app dependencies
+RUN npm i -g @nestjs/cli
+RUN nest new sms --skip-install
+RUN cd sms
+RUN npm install plivo
+RUN npm i
+
+# COPY MAIN FILE
+COPY numbers.ts src/app.controller.ts
+
+EXPOSE 3000
+CMD [ "npm", "run start" ]
