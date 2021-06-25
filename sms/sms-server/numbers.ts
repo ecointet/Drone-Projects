@@ -9,7 +9,7 @@ export class AppController {
 
     @Get('/outbound')
     sendSMS() {
-        const client = new plivo.Client('MAZTYZYTA3YMNJYTFMYW','OGI5OWQ0ZTc2MzY2Y2RkYjBjMjMzYzJkYjIzZDVi');
+        const client = new plivo.Client('','');
         client.messages.create(
                 '+17253737999',
                 '+33633807171',
