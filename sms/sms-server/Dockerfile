@@ -1,7 +1,6 @@
 FROM node:latest
 
-# Create app directory
-WORKDIR /usr/src/app
+WORKDIR /usr/app
 
 # Install app dependencies
 RUN npm i -g @nestjs/cli
@@ -11,7 +10,10 @@ RUN npm install plivo
 RUN npm i
 
 # COPY MAIN FILE
-COPY numbers.ts src/app.controller.ts
+COPY ./numbers.ts ./sms/src/app.controller.ts
+
+WORKDIR /usr/app/sms
+RUN npm install express
 
 EXPOSE 3000
-CMD [ "npm", "run start" ]
+CMD ["npm", "run", "start"]
