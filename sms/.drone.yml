@@ -10,5 +10,5 @@ steps:
     password:
       from_secret: ecointet-docker-hub-password
     repo: ecointet/sms-server
-    dockerfile: sms-server/Dockerfile
+    dockerfile: Dockerfile
     tag: "0.1"
