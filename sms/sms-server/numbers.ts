@@ -9,11 +9,11 @@ export class AppController {
 
     @Get('/outbound')
     sendSMS() {
-        const client = new plivo.Client('','');
+        const client = new plivo.Client(process.env.AUTH_ID, process.env.AUTH_TOKEN);
         client.messages.create(
-                '+17253737999',
-                '+33633807171',
-                'Hello, from Nest!',
+                process.env.SOURCE,
+                process.env.DEST,
+                process.env.MESSAGE,
             )
             .then(
                 function(response) {
